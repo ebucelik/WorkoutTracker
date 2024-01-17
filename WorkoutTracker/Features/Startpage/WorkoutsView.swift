@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct WorkoutsView: View {
+
+    @State
+    var workouts: [Workout] = .workouts
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Workouts")
+                .font(.largeTitle)
+
+            List(workouts, id: \.self) { workout in
+                VStack(alignment: .leading) {
+                    NavigationLink {
+                        WorkoutDetailView(workout: workout)
+                    } label: {
+                        HStack {
+                            Text(workout.workoutname)
+
+                            Spacer()
+
+                            Text(workout.workoutdate)
+                        }
+                    }
+
+                }
+            }
+            .listStyle(.plain)
+        }
     }
 }
 

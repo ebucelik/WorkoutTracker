@@ -12,6 +12,7 @@ struct WorkoutTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             AppView()
+                .environmentObject(Account())
         }
     }
 }

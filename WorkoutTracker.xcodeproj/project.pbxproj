@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		713848ED2B583AFC0060D210 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848EC2B583AFC0060D210 /* EntryView.swift */; };
+		713848EF2B583B050060D210 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848EE2B583B050060D210 /* LoginView.swift */; };
+		713848F12B583B0D0060D210 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848F02B583B0D0060D210 /* RegisterView.swift */; };
+		713848F42B583B3D0060D210 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848F32B583B3D0060D210 /* Login.swift */; };
+		713848F62B583B5F0060D210 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848F52B583B5F0060D210 /* Register.swift */; };
+		713848FB2B583DB40060D210 /* View+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848FA2B583DB40060D210 /* View+Extentions.swift */; };
+		713848FE2B583E160060D210 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713848FD2B583E160060D210 /* Common.swift */; };
+		713849012B58416A0060D210 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713849002B58416A0060D210 /* Account.swift */; };
+		713849042B584A030060D210 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713849032B584A030060D210 /* Workout.swift */; };
+		713849072B584DC00060D210 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713849062B584DC00060D210 /* WorkoutDetailView.swift */; };
 		7182673A2B56EA1C00579D2D /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267392B56EA1C00579D2D /* WorkoutsView.swift */; };
 		7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673B2B56EA5800579D2D /* AppViewModel.swift */; };
 		7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673D2B56EEF600579D2D /* SideMenuView.swift */; };
@@ -26,6 +36,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		713848EC2B583AFC0060D210 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		713848EE2B583B050060D210 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		713848F02B583B0D0060D210 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		713848F32B583B3D0060D210 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		713848F52B583B5F0060D210 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		713848FA2B583DB40060D210 /* View+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extentions.swift"; sourceTree = "<group>"; };
+		713848FD2B583E160060D210 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		713849002B58416A0060D210 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		713849032B584A030060D210 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		713849062B584DC00060D210 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		718267392B56EA1C00579D2D /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		7182673B2B56EA5800579D2D /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		7182673D2B56EEF600579D2D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -56,9 +76,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		713848EB2B583AE60060D210 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				713848F22B583B330060D210 /* Model */,
+				713848EC2B583AFC0060D210 /* EntryView.swift */,
+				713848EE2B583B050060D210 /* LoginView.swift */,
+				713848F02B583B0D0060D210 /* RegisterView.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		713848F22B583B330060D210 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				713848F32B583B3D0060D210 /* Login.swift */,
+				713848F52B583B5F0060D210 /* Register.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		713848F72B583C3A0060D210 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				713848FA2B583DB40060D210 /* View+Extentions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		713848FC2B583E070060D210 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				713848FF2B5841610060D210 /* Model */,
+				713848FD2B583E160060D210 /* Common.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		713848FF2B5841610060D210 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				713849002B58416A0060D210 /* Account.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		713849022B5849E00060D210 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				713849032B584A030060D210 /* Workout.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		713849052B584DB50060D210 /* WorkoutDetail */ = {
+			isa = PBXGroup;
+			children = (
+				713849062B584DC00060D210 /* WorkoutDetailView.swift */,
+			);
+			path = WorkoutDetail;
+			sourceTree = "<group>";
+		};
 		718267372B56E9DE00579D2D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				713849052B584DB50060D210 /* WorkoutDetail */,
+				713848EB2B583AE60060D210 /* Entry */,
 				718267472B56F82400579D2D /* VisualProgress */,
 				718267442B56F47F00579D2D /* Weights */,
 				7182673F2B56EFC300579D2D /* SideMenu */,
@@ -70,6 +153,7 @@
 		718267382B56E9F000579D2D /* Startpage */ = {
 			isa = PBXGroup;
 			children = (
+				713849022B5849E00060D210 /* Model */,
 				718267392B56EA1C00579D2D /* WorkoutsView.swift */,
 			);
 			path = Startpage;
@@ -120,6 +204,8 @@
 		71A7BFFE2B55B5F7005BA0C1 /* WorkoutTracker */ = {
 			isa = PBXGroup;
 			children = (
+				713848FC2B583E070060D210 /* Shared */,
+				713848F72B583C3A0060D210 /* Extensions */,
 				718267372B56E9DE00579D2D /* Features */,
 				71E1951F2B55B6D70056E468 /* Network */,
 				71A7BFFF2B55B5F7005BA0C1 /* WorkoutTrackerApp.swift */,
@@ -222,19 +308,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				718267432B56F0C400579D2D /* SideMenuContentView.swift in Sources */,
+				713849012B58416A0060D210 /* Account.swift in Sources */,
+				713848F62B583B5F0060D210 /* Register.swift in Sources */,
 				718267492B56F83600579D2D /* VisualProgressView.swift in Sources */,
+				713848ED2B583AFC0060D210 /* EntryView.swift in Sources */,
 				71E195212B55B7130056E468 /* BackendClient.swift in Sources */,
 				71E195292B55BA740056E468 /* ErrorMessage.swift in Sources */,
 				7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */,
 				71E195272B55B7E60056E468 /* Call.swift in Sources */,
 				71E195232B55B74D0056E468 /* APIError.swift in Sources */,
+				713848F12B583B0D0060D210 /* RegisterView.swift in Sources */,
 				71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */,
+				713849072B584DC00060D210 /* WorkoutDetailView.swift in Sources */,
 				71E195252B55B7D30056E468 /* HTTPMethod.swift in Sources */,
 				7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */,
+				713848FE2B583E160060D210 /* Common.swift in Sources */,
 				718267412B56EFD300579D2D /* SideMenuRowType.swift in Sources */,
 				7182673A2B56EA1C00579D2D /* WorkoutsView.swift in Sources */,
 				718267462B56F4B000579D2D /* WeightsView.swift in Sources */,
+				713848F42B583B3D0060D210 /* Login.swift in Sources */,
+				713848EF2B583B050060D210 /* LoginView.swift in Sources */,
+				713849042B584A030060D210 /* Workout.swift in Sources */,
 				71A7C0002B55B5F7005BA0C1 /* WorkoutTrackerApp.swift in Sources */,
+				713848FB2B583DB40060D210 /* View+Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,11 @@ struct AppView: View {
     var selectedRow = 0
     @State
     var path = NavigationPath()
+    @EnvironmentObject
+    var account: Account
+
+    @State
+    var isUserLoggedIn: Bool = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -74,11 +79,9 @@ struct AppView: View {
                 )
             }
             .onChange(of: selectedRow) {
-                if selectedRow == 1 {
-                    path.append(selectedRow)
-                }
-
-                if selectedRow == 2 {
+                if selectedRow == 0 {
+                    path.removeLast(path.count)
+                } else {
                     path.append(selectedRow)
                 }
             }
@@ -90,6 +93,15 @@ struct AppView: View {
                 if selection == 2 {
                     VisualProgressView()
                 }
+            }
+            .navigationDestination(
+                isPresented: $isUserLoggedIn
+            ) {
+                EntryView(isUserLoggedIn: $isUserLoggedIn)
+                    .navigationBarBackButtonHidden()
+            }
+            .onAppear {
+                isUserLoggedIn = account.username.isEmpty
             }
         }
     }
