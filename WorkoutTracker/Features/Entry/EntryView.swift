@@ -8,27 +8,38 @@
 import SwiftUI
 
 struct EntryView: View {
-
-    @Binding
-    var isUserLoggedIn: Bool
     @State
     var showRegisterView: Bool = false
 
+    @EnvironmentObject
+    var account: Account
+
+    @Environment(\.dismiss)
+    var dismiss
+
     var body: some View {
-        if showRegisterView {
-            RegisterView(
-                isUserLoggedIn: $isUserLoggedIn,
-                showRegisterView: $showRegisterView
-            )
-        } else {
-            LoginView(
-                isUserLoggedIn: $isUserLoggedIn,
-                showRegisterView: $showRegisterView
-            )
+        ZStack {
+            if showRegisterView {
+                RegisterView(
+                    showRegisterView: $showRegisterView
+                )
+            } else {
+                LoginView(
+                    showRegisterView: $showRegisterView
+                )
+            }
         }
+        .onReceive(
+            account.$username,
+            perform: { username in
+                if !username.isEmpty {
+                    dismiss()
+                }
+            }
+        )
     }
 }
 
 #Preview {
-    EntryView(isUserLoggedIn: .constant(false))
+    EntryView()
 }

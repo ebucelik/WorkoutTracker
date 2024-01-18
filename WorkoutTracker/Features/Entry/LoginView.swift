@@ -11,10 +11,12 @@ struct LoginView: View {
 
     @State
     var login: Login = .empty
-    @Binding
-    var isUserLoggedIn: Bool
+
     @Binding
     var showRegisterView: Bool
+
+    @EnvironmentObject
+    var account: Account
 
     var body: some View {
         VStack {
@@ -72,7 +74,8 @@ struct LoginView: View {
                 Button(
                     action: {
                         // TODO: Login
-                        isUserLoggedIn.toggle()
+//                        isUserLoggedIn.toggle()
+                        account.username = "ebu"
                     },
                     label: {
                         Text("LOGIN")
@@ -93,7 +96,6 @@ struct LoginView: View {
 #Preview {
     LoginView(
         login: .empty,
-        isUserLoggedIn: .constant(false),
         showRegisterView: .constant(false)
     )
 }

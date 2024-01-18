@@ -15,11 +15,11 @@ struct AppView: View {
     var selectedRow = 0
     @State
     var path = NavigationPath()
+    @State
+    var showEntryView: Bool = false
+
     @EnvironmentObject
     var account: Account
-
-    @State
-    var isUserLoggedIn: Bool = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -95,18 +95,17 @@ struct AppView: View {
                 }
             }
             .navigationDestination(
-                isPresented: $isUserLoggedIn
+                isPresented: $showEntryView
             ) {
-                EntryView(isUserLoggedIn: $isUserLoggedIn)
+                EntryView()
                     .navigationBarBackButtonHidden()
             }
-            .onAppear {
-                isUserLoggedIn = account.username.isEmpty
-            }
+            .onReceive(
+                account.$username,
+                perform: { username in
+                    showEntryView = username.isEmpty
+                }
+            )
         }
     }
-}
-
-#Preview {
-    AppView()
 }

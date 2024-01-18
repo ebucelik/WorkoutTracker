@@ -11,10 +11,12 @@ struct RegisterView: View {
 
     @State
     var register: Register = .empty
-    @Binding
-    var isUserLoggedIn: Bool
+
     @Binding
     var showRegisterView: Bool
+    
+    @EnvironmentObject
+    var account: Account
 
     var body: some View {
         VStack {
@@ -87,7 +89,7 @@ struct RegisterView: View {
                 Button(
                     action: {
                         // TODO: Register
-                        isUserLoggedIn.toggle()
+                        account.username = "Wee"
                     },
                     label: {
                         Text("REGISTER")
@@ -108,7 +110,6 @@ struct RegisterView: View {
 #Preview {
     RegisterView(
         register: .empty,
-        isUserLoggedIn: .constant(false),
         showRegisterView: .constant(false)
     )
 }

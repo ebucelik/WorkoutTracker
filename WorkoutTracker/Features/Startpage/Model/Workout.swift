@@ -9,22 +9,24 @@ import Foundation
 
 struct Workout: Codable, Hashable {
     struct Exercise: Codable, Hashable {
-        let exercise: String
-        let set: Int
-        let weight: String
-        let reps: Int
+        var exercise: String
+        var set: Int
+        var weight: Float
+        var unit: String
+        var reps: Int
 
-        init(exercise: String, set: Int, weight: String, reps: Int) {
+        init(exercise: String, set: Int, weight: Float, unit: String, reps: Int) {
             self.exercise = exercise
             self.set = set
             self.weight = weight
+            self.unit = unit
             self.reps = reps
         }
     }
 
-    let workoutname: String
-    let workoutdate: String
-    let workouts: [Exercise]
+    var workoutname: String
+    var workoutdate: String
+    var workouts: [Exercise]
 
     init(workoutname: String, workoutdate: String, workouts: [Exercise]) {
         self.workoutname = workoutname
@@ -38,24 +40,104 @@ extension Workout {
         Workout(
             workoutname: "Pushday",
             workoutdate: "2024-01-01",
-            workouts: []
+            workouts: .benchpress
         )
     }
 }
 
-extension Sequence {
+extension Sequence where Iterator.Element == Workout {
     static var workouts: [Workout] {
         [
             .mock,
             Workout(
                 workoutname: "Pullday",
                 workoutdate: "2024-01-22",
-                workouts: []
+                workouts: .pullups
             ),
             Workout(
                 workoutname: "Legday",
                 workoutdate: "2024-02-01",
-                workouts: []
+                workouts: .legpress
+            )
+        ]
+    }
+}
+
+extension Sequence where Iterator.Element == Workout.Exercise {
+    static var pullups: [Workout.Exercise] {
+        [
+            Workout.Exercise(
+                exercise: "Pullup",
+                set: 1,
+                weight: 80.0,
+                unit: "kg",
+                reps: 8
+            ),
+            Workout.Exercise(
+                exercise: "Pullup",
+                set: 2,
+                weight: 80.0,
+                unit: "kg",
+                reps: 5
+            ),
+            Workout.Exercise(
+                exercise: "Pullup",
+                set: 3,
+                weight: 80.0,
+                unit: "kg",
+                reps: 4
+            )
+        ]
+    }
+
+    static var benchpress: [Workout.Exercise] {
+        [
+            Workout.Exercise(
+                exercise: "Benchpress",
+                set: 1,
+                weight: 12.5,
+                unit: "kg",
+                reps: 8
+            ),
+            Workout.Exercise(
+                exercise: "Benchpress",
+                set: 2,
+                weight: 12.5,
+                unit: "kg",
+                reps: 7
+            ),
+            Workout.Exercise(
+                exercise: "Benchpress",
+                set: 3,
+                weight: 10.0,
+                unit: "kg",
+                reps: 8
+            )
+        ]
+    }
+
+    static var legpress: [Workout.Exercise] {
+        [
+            Workout.Exercise(
+                exercise: "Legpress",
+                set: 1,
+                weight: 120.0,
+                unit: "kg",
+                reps: 9
+            ),
+            Workout.Exercise(
+                exercise: "Legpress",
+                set: 2,
+                weight: 120.0,
+                unit: "kg",
+                reps: 9
+            ),
+            Workout.Exercise(
+                exercise: "Legpress",
+                set: 3,
+                weight: 100.0,
+                unit: "kg",
+                reps: 8
             )
         ]
     }
