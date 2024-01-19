@@ -112,6 +112,9 @@ struct WorkoutPlanDetailView: View {
                 Spacer()
             }
             .padding()
+            .onTapGesture {
+                Common.shared.hideKeyboard()
+            }
         }
     }
 }

@@ -101,6 +101,9 @@ struct WeightsView: View {
 
             Spacer()
         }
+        .onTapGesture {
+            Common.shared.hideKeyboard()
+        }
     }
 }
 

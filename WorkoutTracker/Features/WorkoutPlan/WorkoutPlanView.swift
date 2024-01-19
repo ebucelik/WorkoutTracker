@@ -49,6 +49,7 @@ struct WorkoutPlanView: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
+            .padding(.vertical, 16)
         }
         .onAppear {
             // TODO: get call for plans

@@ -58,6 +58,7 @@ struct WorkoutsView: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
+            .padding(.vertical, 16)
         }
     }
 }

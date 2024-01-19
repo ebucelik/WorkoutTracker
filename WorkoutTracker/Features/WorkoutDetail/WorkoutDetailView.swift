@@ -85,5 +85,8 @@ struct WorkoutDetailView: View {
             )
             .padding(.vertical, 8)
         }
+        .onTapGesture {
+            Common.shared.hideKeyboard()
+        }
     }
 }

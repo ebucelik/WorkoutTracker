@@ -58,6 +58,8 @@ struct AppView: View {
                             Image(systemName: "line.3.horizontal")
                                 .resizable()
                                 .frame(width: 24, height: 16)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 16)
                         }
 
                         Spacer()
@@ -65,7 +67,6 @@ struct AppView: View {
 
                     Spacer()
                 }
-                .padding(.horizontal, 24)
 
                 SideMenuView(
                     isPresenting: $presentSideMenu,
