@@ -48,18 +48,28 @@ struct WorkoutPlanDetailView: View {
                                         .font(.subheadline)
                                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                                    TextField("Exercise", text: $workout.workouts[exercise.offset].exercise)
-                                        .padding(.bottom, 8)
+                                    VStack {
+                                        TextField("Exercise e.g. Benchpress", text: $workout.workouts[exercise.offset].exercise)
+                                    }
+                                    .padding(8)
+                                    .background(.gray.opacity(0.3))
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 4, height: 4)))
+                                    .padding(.bottom, 12)
 
                                     Text("Add set")
                                         .font(.subheadline)
                                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                                    TextField(
-                                        "",
-                                        value: $workout.workouts[exercise.offset].set,
-                                        formatter: NumberFormatter()
-                                    )
+                                    VStack {
+                                        TextField(
+                                            "Set e.g. 3",
+                                            value: $workout.workouts[exercise.offset].set,
+                                            formatter: NumberFormatter()
+                                        )
+                                    }
+                                    .padding(8)
+                                    .background(.gray.opacity(0.3))
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 4, height: 4)))
                                 }
 
                                 Button {

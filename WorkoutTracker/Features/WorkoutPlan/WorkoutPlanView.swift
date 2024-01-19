@@ -32,18 +32,13 @@ struct WorkoutPlanView: View {
                 }
                 .listStyle(.plain)
             }
-            .navigationDestination(
-                isPresented: $showWorkoutPlanDetailView
-            ) {
-                WorkoutPlanDetailView(workout: .empty)
-            }
 
             VStack {
                 HStack {
                     Spacer()
 
-                    Button {
-                        showWorkoutPlanDetailView.toggle()
+                    NavigationLink {
+                        WorkoutPlanDetailView(workout: .empty)
                     } label: {
                         Image(systemName: "plus")
                             .resizable()

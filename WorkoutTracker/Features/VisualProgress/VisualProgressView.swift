@@ -9,6 +9,11 @@ import SwiftUI
 
 struct VisualProgressView: View {
     var body: some View {
-        Text("VisualProgressView")
+        VStack {
+            Text("Visual Progress")
+                .font(.largeTitle)
+
+            
+        }
     }
 }

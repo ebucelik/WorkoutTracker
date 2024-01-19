@@ -30,6 +30,8 @@
 		71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7C0012B55B5F7005BA0C1 /* AppView.swift */; };
 		71A7C0042B55B5F7005BA0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A7C0032B55B5F7005BA0C1 /* Assets.xcassets */; };
 		71A7C0072B55B5F7005BA0C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A7C0062B55B5F7005BA0C1 /* Preview Assets.xcassets */; };
+		71D1DB5B2B5A89A500027786 /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1DB5A2B5A89A500027786 /* AddWorkoutView.swift */; };
+		71D1DB5E2B5AB38000027786 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1DB5D2B5AB38000027786 /* Weight.swift */; };
 		71E195212B55B7130056E468 /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E195202B55B7130056E468 /* BackendClient.swift */; };
 		71E195232B55B74D0056E468 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E195222B55B74D0056E468 /* APIError.swift */; };
 		71E195252B55B7D30056E468 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E195242B55B7D30056E468 /* HTTPMethod.swift */; };
@@ -62,6 +64,8 @@
 		71A7C0012B55B5F7005BA0C1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		71A7C0032B55B5F7005BA0C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71A7C0062B55B5F7005BA0C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71D1DB5A2B5A89A500027786 /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
+		71D1DB5D2B5AB38000027786 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		71E195202B55B7130056E468 /* BackendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
 		71E195222B55B74D0056E468 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		71E195242B55B7D30056E468 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				713849022B5849E00060D210 /* Model */,
 				718267392B56EA1C00579D2D /* WorkoutsView.swift */,
+				71D1DB5A2B5A89A500027786 /* AddWorkoutView.swift */,
 			);
 			path = Startpage;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 		718267442B56F47F00579D2D /* Weights */ = {
 			isa = PBXGroup;
 			children = (
+				71D1DB5C2B5AB37700027786 /* Model */,
 				718267452B56F4B000579D2D /* WeightsView.swift */,
 			);
 			path = Weights;
@@ -237,6 +243,14 @@
 				71A7C0062B55B5F7005BA0C1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71D1DB5C2B5AB37700027786 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71D1DB5D2B5AB38000027786 /* Weight.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71E1951F2B55B6D70056E468 /* Network */ = {
@@ -334,11 +348,13 @@
 				7193885E2B59E8E5009FB015 /* WorkoutPlanView.swift in Sources */,
 				71E195232B55B74D0056E468 /* APIError.swift in Sources */,
 				713848F12B583B0D0060D210 /* RegisterView.swift in Sources */,
+				71D1DB5B2B5A89A500027786 /* AddWorkoutView.swift in Sources */,
 				71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */,
 				713849072B584DC00060D210 /* WorkoutDetailView.swift in Sources */,
 				71E195252B55B7D30056E468 /* HTTPMethod.swift in Sources */,
 				7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */,
 				713848FE2B583E160060D210 /* Common.swift in Sources */,
+				71D1DB5E2B5AB38000027786 /* Weight.swift in Sources */,
 				718267412B56EFD300579D2D /* SideMenuRowType.swift in Sources */,
 				7182673A2B56EA1C00579D2D /* WorkoutsView.swift in Sources */,
 				718267462B56F4B000579D2D /* WeightsView.swift in Sources */,

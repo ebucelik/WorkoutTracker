@@ -11,29 +11,53 @@ struct WorkoutsView: View {
 
     @State
     var workouts: [Workout] = .workouts
+    @State
+    var showAddWorkoutView = false
 
     var body: some View {
-        VStack {
-            Text("Workouts")
-                .font(.largeTitle)
+        ZStack {
+            VStack {
+                Text("Workouts")
+                    .font(.largeTitle)
 
-            List(workouts, id: \.self) { workout in
-                VStack(alignment: .leading) {
-                    NavigationLink {
-                        WorkoutDetailView(workout: workout)
-                    } label: {
-                        HStack {
-                            Text(workout.workoutname)
+                List(workouts, id: \.self) { workout in
+                    VStack(alignment: .leading) {
+                        NavigationLink {
+                            WorkoutDetailView(
+                                workout: .constant(workout),
+                                isAddPlanView: false
+                            )
+                        } label: {
+                            HStack {
+                                Text(workout.workoutname)
 
-                            Spacer()
+                                Spacer()
 
-                            Text(workout.workoutdate)
+                                Text(workout.workoutdate)
+                            }
                         }
-                    }
 
+                    }
                 }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
+
+            VStack {
+                HStack {
+                    Spacer()
+
+                    NavigationLink {
+                        AddWorkoutView()
+                    } label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding(.horizontal, 24)
         }
     }
 }

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
 
-    @State
+    @Binding
     var workout: Workout
+
+    var isAddPlanView: Bool
 
     @Environment(\.dismiss)
     var dismiss
@@ -72,15 +74,16 @@ struct WorkoutDetailView: View {
                     dismiss()
                 },
                 label: {
-                    Text("Update \(workout.workoutname)")
-                        .font(.title2)
+                    if isAddPlanView {
+                        Text("Add plan")
+                            .font(.title2)
+                    } else {
+                        Text("Update \(workout.workoutname)")
+                            .font(.title2)
+                    }
                 }
             )
             .padding(.vertical, 8)
         }
     }
-}
-
-#Preview {
-    WorkoutDetailView(workout: .mock)
 }
