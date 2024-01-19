@@ -48,11 +48,11 @@ struct WorkoutDetailView: View {
                                 formatter: weightFormatter
                             )
 
-                            Text(exercise.element.unit)
+                            Text("kg")
                         }
 
                         HStack {
-                            Text("Rep: ")
+                            Text("Reps: ")
 
                             TextField(
                                 "",

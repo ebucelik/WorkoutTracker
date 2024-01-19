@@ -24,6 +24,8 @@
 		718267432B56F0C400579D2D /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267422B56F0C400579D2D /* SideMenuContentView.swift */; };
 		718267462B56F4B000579D2D /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267452B56F4B000579D2D /* WeightsView.swift */; };
 		718267492B56F83600579D2D /* VisualProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267482B56F83600579D2D /* VisualProgressView.swift */; };
+		7193885E2B59E8E5009FB015 /* WorkoutPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193885D2B59E8E5009FB015 /* WorkoutPlanView.swift */; };
+		719388602B59E9AB009FB015 /* WorkoutPlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193885F2B59E9AB009FB015 /* WorkoutPlanDetailView.swift */; };
 		71A7C0002B55B5F7005BA0C1 /* WorkoutTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7BFFF2B55B5F7005BA0C1 /* WorkoutTrackerApp.swift */; };
 		71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7C0012B55B5F7005BA0C1 /* AppView.swift */; };
 		71A7C0042B55B5F7005BA0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A7C0032B55B5F7005BA0C1 /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		718267422B56F0C400579D2D /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
 		718267452B56F4B000579D2D /* WeightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsView.swift; sourceTree = "<group>"; };
 		718267482B56F83600579D2D /* VisualProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualProgressView.swift; sourceTree = "<group>"; };
+		7193885D2B59E8E5009FB015 /* WorkoutPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanView.swift; sourceTree = "<group>"; };
+		7193885F2B59E9AB009FB015 /* WorkoutPlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanDetailView.swift; sourceTree = "<group>"; };
 		71A7BFFC2B55B5F7005BA0C1 /* WorkoutTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A7BFFF2B55B5F7005BA0C1 /* WorkoutTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerApp.swift; sourceTree = "<group>"; };
 		71A7C0012B55B5F7005BA0C1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		718267372B56E9DE00579D2D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				7193885C2B59E8D3009FB015 /* WorkoutPlan */,
 				713849052B584DB50060D210 /* WorkoutDetail */,
 				713848EB2B583AE60060D210 /* Entry */,
 				718267472B56F82400579D2D /* VisualProgress */,
@@ -183,6 +188,15 @@
 				718267482B56F83600579D2D /* VisualProgressView.swift */,
 			);
 			path = VisualProgress;
+			sourceTree = "<group>";
+		};
+		7193885C2B59E8D3009FB015 /* WorkoutPlan */ = {
+			isa = PBXGroup;
+			children = (
+				7193885D2B59E8E5009FB015 /* WorkoutPlanView.swift */,
+				7193885F2B59E9AB009FB015 /* WorkoutPlanDetailView.swift */,
+			);
+			path = WorkoutPlan;
 			sourceTree = "<group>";
 		};
 		71A7BFF32B55B5F6005BA0C1 = {
@@ -315,7 +329,9 @@
 				71E195212B55B7130056E468 /* BackendClient.swift in Sources */,
 				71E195292B55BA740056E468 /* ErrorMessage.swift in Sources */,
 				7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */,
+				719388602B59E9AB009FB015 /* WorkoutPlanDetailView.swift in Sources */,
 				71E195272B55B7E60056E468 /* Call.swift in Sources */,
+				7193885E2B59E8E5009FB015 /* WorkoutPlanView.swift in Sources */,
 				71E195232B55B74D0056E468 /* APIError.swift in Sources */,
 				713848F12B583B0D0060D210 /* RegisterView.swift in Sources */,
 				71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */,

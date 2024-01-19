@@ -24,7 +24,7 @@ struct AppView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                TabView(selection: $selectedRow) {
+                TabView {
                     WorkoutsView()
                         .tabItem {
                             Label(
@@ -32,9 +32,8 @@ struct AppView: View {
                                 icon: { Image(systemName: "dumbbell.fill") }
                             )
                         }
-                        .tag(0)
 
-                    Text("Workoutplan") // TODO: replace
+                    WorkoutPlanView()
                         .tabItem {
                             Label(
                                 title: { Text("Workoutplan") },
