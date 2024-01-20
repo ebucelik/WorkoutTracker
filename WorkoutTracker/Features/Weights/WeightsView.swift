@@ -10,11 +10,16 @@ import SwiftUI
 struct WeightsView: View {
 
     @State
-    var weights: [Weight] = .weights
+    var weights: Weights = Weights(weights: [])
     @State
     var newWeight: Weight = .empty
     @State
     var selectedDate: Date = Date.now
+    @State
+    var message: Message?
+
+    @EnvironmentObject
+    var account: Account
 
     var weightFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -29,12 +34,18 @@ struct WeightsView: View {
         return formatter
     }
 
+    let weightService = WeightService()
+
     var body: some View {
         VStack {
             Text("Weights")
                 .font(.largeTitle)
 
-            List(Array(weights.enumerated()), id: \.offset) { weight in
+            if let message {
+                Common.shared.messageView(message: message)
+            }
+
+            List(Array(weights.weights.enumerated()), id: \.offset) { weight in
                 HStack {
                     Text(String(format: "%.1f", weight.element.weight))
 
@@ -46,7 +57,7 @@ struct WeightsView: View {
 
                     Button {
                         // TODO: delete Call
-                        weights.remove(at: weight.offset)
+                        weights.weights.remove(at: weight.offset)
                     } label: {
                         Image(systemName: "minus.circle.fill")
                             .resizable()
@@ -84,13 +95,31 @@ struct WeightsView: View {
             .labelsHidden()
 
             Button {
-                // TODO: add call
                 if newWeight.weight > 0 {
+                    newWeight.username = account.username
                     newWeight.date = dateFormatter.string(from: selectedDate)
-                    weights.append(newWeight)
 
-                    newWeight = .empty
-                    selectedDate = .now
+                    Task {
+                        do {
+                            message = nil
+
+                            let weight = try await weightService.addWeight(newWeight)
+
+                            weights.weights.append(weight)
+
+                            newWeight = .empty
+                            selectedDate = .now
+                        } catch {
+                            if let error = error as? APIError {
+                                switch error {
+                                case .unauthorized(let message), .unknown(let message):
+                                    self.message = message
+                                default:
+                                    break
+                                }
+                            }
+                        }
+                    }
                 }
             } label: {
                 Image(systemName: "plus")
@@ -103,6 +132,24 @@ struct WeightsView: View {
         }
         .onTapGesture {
             Common.shared.hideKeyboard()
+        }
+        .onAppear {
+            Task {
+                do {
+                    message = nil
+
+                    self.weights = try await weightService.getWeights(by: account.username)
+                } catch {
+                    if let error = error as? APIError {
+                        switch error {
+                        case .unauthorized(let message), .unknown(let message):
+                            self.message = message
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
         }
     }
 }

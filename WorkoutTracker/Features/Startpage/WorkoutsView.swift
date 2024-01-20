@@ -35,7 +35,7 @@ struct WorkoutsView: View {
                     VStack(alignment: .leading) {
                         NavigationLink {
                             WorkoutDetailView(
-                                workout: workout,
+                                tempWorkout: .constant(workout),
                                 isAddPlanView: false
                             )
                         } label: {

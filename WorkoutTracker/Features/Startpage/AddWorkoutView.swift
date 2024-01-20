@@ -43,7 +43,7 @@ struct AddWorkoutView: View {
 
             if selectedWorkoutPlan != .empty {
                 WorkoutDetailView(
-                    workout: selectedWorkoutPlan.toWorkout(),
+                    tempWorkout: .constant($selectedWorkoutPlan.wrappedValue.toWorkout()),
                     isAddPlanView: true
                 )
             }

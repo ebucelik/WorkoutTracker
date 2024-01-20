@@ -13,7 +13,10 @@ struct WorkoutDetailView: View {
     var message: Message?
 
     @State
-    var workout: Workout
+    var workout: Workout = .empty
+
+    @Binding
+    var tempWorkout: Workout
 
     var isAddPlanView: Bool
 
@@ -124,6 +127,12 @@ struct WorkoutDetailView: View {
         }
         .onTapGesture {
             Common.shared.hideKeyboard()
+        }
+        .onAppear {
+            self.workout = tempWorkout
+        }
+        .onChange(of: tempWorkout) { _, newValue in
+            self.workout = newValue
         }
     }
 }

@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Weights: Codable, Hashable {
+    var weights: [Weight]
+}
+
 struct Weight: Codable, Hashable {
     var username: String?
     var weight: Float

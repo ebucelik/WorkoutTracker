@@ -27,6 +27,9 @@
 		715D0E702B5C0300000B4704 /* WorkoutGetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E6F2B5C0300000B4704 /* WorkoutGetCall.swift */; };
 		715D0E722B5C0352000B4704 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E712B5C0352000B4704 /* WorkoutService.swift */; };
 		715D0E742B5C03ED000B4704 /* WorkoutAddCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E732B5C03ED000B4704 /* WorkoutAddCall.swift */; };
+		715D0E772B5C0C9D000B4704 /* AddWeightCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E762B5C0C9D000B4704 /* AddWeightCall.swift */; };
+		715D0E792B5C0CEB000B4704 /* GetWeightsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E782B5C0CEB000B4704 /* GetWeightsCall.swift */; };
+		715D0E7B2B5C0D22000B4704 /* WeightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E7A2B5C0D22000B4704 /* WeightService.swift */; };
 		7182673A2B56EA1C00579D2D /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267392B56EA1C00579D2D /* WorkoutsView.swift */; };
 		7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673B2B56EA5800579D2D /* AppViewModel.swift */; };
 		7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673D2B56EEF600579D2D /* SideMenuView.swift */; };
@@ -71,6 +74,9 @@
 		715D0E6F2B5C0300000B4704 /* WorkoutGetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGetCall.swift; sourceTree = "<group>"; };
 		715D0E712B5C0352000B4704 /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
 		715D0E732B5C03ED000B4704 /* WorkoutAddCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutAddCall.swift; sourceTree = "<group>"; };
+		715D0E762B5C0C9D000B4704 /* AddWeightCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeightCall.swift; sourceTree = "<group>"; };
+		715D0E782B5C0CEB000B4704 /* GetWeightsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeightsCall.swift; sourceTree = "<group>"; };
+		715D0E7A2B5C0D22000B4704 /* WeightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightService.swift; sourceTree = "<group>"; };
 		718267392B56EA1C00579D2D /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		7182673B2B56EA5800579D2D /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		7182673D2B56EEF600579D2D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -199,6 +205,16 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		715D0E752B5C0C91000B4704 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				715D0E762B5C0C9D000B4704 /* AddWeightCall.swift */,
+				715D0E782B5C0CEB000B4704 /* GetWeightsCall.swift */,
+				715D0E7A2B5C0D22000B4704 /* WeightService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		718267372B56E9DE00579D2D /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +253,7 @@
 		718267442B56F47F00579D2D /* Weights */ = {
 			isa = PBXGroup;
 			children = (
+				715D0E752B5C0C91000B4704 /* Service */,
 				71D1DB5C2B5AB37700027786 /* Model */,
 				718267452B56F4B000579D2D /* WeightsView.swift */,
 			);
@@ -395,6 +412,8 @@
 				718267432B56F0C400579D2D /* SideMenuContentView.swift in Sources */,
 				713849012B58416A0060D210 /* Account.swift in Sources */,
 				713848F62B583B5F0060D210 /* Register.swift in Sources */,
+				715D0E7B2B5C0D22000B4704 /* WeightService.swift in Sources */,
+				715D0E772B5C0C9D000B4704 /* AddWeightCall.swift in Sources */,
 				718267492B56F83600579D2D /* VisualProgressView.swift in Sources */,
 				713848ED2B583AFC0060D210 /* EntryView.swift in Sources */,
 				715D0E722B5C0352000B4704 /* WorkoutService.swift in Sources */,
@@ -431,6 +450,7 @@
 				713848EF2B583B050060D210 /* LoginView.swift in Sources */,
 				713849042B584A030060D210 /* Workout.swift in Sources */,
 				71A7C0002B55B5F7005BA0C1 /* WorkoutTrackerApp.swift in Sources */,
+				715D0E792B5C0CEB000B4704 /* GetWeightsCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
