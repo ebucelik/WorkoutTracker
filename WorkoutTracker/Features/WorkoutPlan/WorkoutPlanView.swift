@@ -13,7 +13,14 @@ struct WorkoutPlanView: View {
     var showWorkoutPlanDetailView: Bool = false
 
     @State
-    var workouts: [Workout] = []
+    var workoutPlans: [WorkoutPlan] = []
+    @State
+    var message: Message?
+
+    @EnvironmentObject
+    var account: Account
+
+    let workoutPlanService = WorkoutPlanService()
 
     var body: some View {
         ZStack {
@@ -23,14 +30,18 @@ struct WorkoutPlanView: View {
 
                 Spacer()
 
-                List(workouts, id: \.self) { workoutplan in
+                List(workoutPlans, id: \.self) { workoutplan in
                     NavigationLink {
-                        WorkoutPlanDetailView(workout: workoutplan)
+                        WorkoutPlanDetailView(workoutPlan: workoutplan)
                     } label: {
-                        Text(workoutplan.workoutname)
+                        Text(workoutplan.workoutplanname)
                     }
                 }
                 .listStyle(.plain)
+            }
+
+            if let message {
+                Common.shared.messageView(message: message)
             }
 
             VStack {
@@ -38,7 +49,7 @@ struct WorkoutPlanView: View {
                     Spacer()
 
                     NavigationLink {
-                        WorkoutPlanDetailView(workout: .empty)
+                        WorkoutPlanDetailView(workoutPlan: .empty)
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
@@ -52,7 +63,22 @@ struct WorkoutPlanView: View {
             .padding(.vertical, 16)
         }
         .onAppear {
-            // TODO: get call for plans
+            Task {
+                do {
+                    message = nil
+
+                    self.workoutPlans = try await workoutPlanService.getWorkoutPlans(by: account.username)
+                } catch {
+                    if let error = error as? APIError {
+                        switch error {
+                        case .unauthorized(let message), .unknown(let message):
+                            self.message = message
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
         }
     }
 }

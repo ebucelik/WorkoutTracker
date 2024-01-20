@@ -20,6 +20,10 @@
 		715D0E5F2B5BEF8B000B4704 /* RegisterCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E5E2B5BEF8B000B4704 /* RegisterCall.swift */; };
 		715D0E612B5BEFB2000B4704 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E602B5BEFB2000B4704 /* LoginService.swift */; };
 		715D0E632B5BF019000B4704 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E622B5BF019000B4704 /* RegisterService.swift */; };
+		715D0E662B5BF940000B4704 /* WorkoutPlanCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E652B5BF940000B4704 /* WorkoutPlanCall.swift */; };
+		715D0E682B5BF96F000B4704 /* WorkoutPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E672B5BF96F000B4704 /* WorkoutPlanService.swift */; };
+		715D0E6B2B5BFBAD000B4704 /* WorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E6A2B5BFBAD000B4704 /* WorkoutPlan.swift */; };
+		715D0E6D2B5BFD82000B4704 /* WorkoutPlanGetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715D0E6C2B5BFD82000B4704 /* WorkoutPlanGetCall.swift */; };
 		7182673A2B56EA1C00579D2D /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718267392B56EA1C00579D2D /* WorkoutsView.swift */; };
 		7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673B2B56EA5800579D2D /* AppViewModel.swift */; };
 		7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182673D2B56EEF600579D2D /* SideMenuView.swift */; };
@@ -57,6 +61,10 @@
 		715D0E5E2B5BEF8B000B4704 /* RegisterCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCall.swift; sourceTree = "<group>"; };
 		715D0E602B5BEFB2000B4704 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		715D0E622B5BF019000B4704 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		715D0E652B5BF940000B4704 /* WorkoutPlanCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanCall.swift; sourceTree = "<group>"; };
+		715D0E672B5BF96F000B4704 /* WorkoutPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanService.swift; sourceTree = "<group>"; };
+		715D0E6A2B5BFBAD000B4704 /* WorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlan.swift; sourceTree = "<group>"; };
+		715D0E6C2B5BFD82000B4704 /* WorkoutPlanGetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanGetCall.swift; sourceTree = "<group>"; };
 		718267392B56EA1C00579D2D /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		7182673B2B56EA5800579D2D /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		7182673D2B56EEF600579D2D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -157,6 +165,24 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		715D0E642B5BF931000B4704 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				715D0E652B5BF940000B4704 /* WorkoutPlanCall.swift */,
+				715D0E672B5BF96F000B4704 /* WorkoutPlanService.swift */,
+				715D0E6C2B5BFD82000B4704 /* WorkoutPlanGetCall.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		715D0E692B5BFB9E000B4704 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				715D0E6A2B5BFBAD000B4704 /* WorkoutPlan.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		718267372B56E9DE00579D2D /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +238,8 @@
 		7193885C2B59E8D3009FB015 /* WorkoutPlan */ = {
 			isa = PBXGroup;
 			children = (
+				715D0E692B5BFB9E000B4704 /* Model */,
+				715D0E642B5BF931000B4704 /* Service */,
 				7193885D2B59E8E5009FB015 /* WorkoutPlanView.swift */,
 				7193885F2B59E9AB009FB015 /* WorkoutPlanDetailView.swift */,
 			);
@@ -357,15 +385,19 @@
 				715D0E5D2B5BEEFE000B4704 /* LoginCall.swift in Sources */,
 				7182673C2B56EA5800579D2D /* AppViewModel.swift in Sources */,
 				719388602B59E9AB009FB015 /* WorkoutPlanDetailView.swift in Sources */,
+				715D0E662B5BF940000B4704 /* WorkoutPlanCall.swift in Sources */,
 				71E195272B55B7E60056E468 /* Call.swift in Sources */,
 				7193885E2B59E8E5009FB015 /* WorkoutPlanView.swift in Sources */,
+				715D0E6D2B5BFD82000B4704 /* WorkoutPlanGetCall.swift in Sources */,
 				71E195232B55B74D0056E468 /* APIError.swift in Sources */,
 				713848F12B583B0D0060D210 /* RegisterView.swift in Sources */,
 				71D1DB5B2B5A89A500027786 /* AddWorkoutView.swift in Sources */,
 				71A7C0022B55B5F7005BA0C1 /* AppView.swift in Sources */,
 				713849072B584DC00060D210 /* WorkoutDetailView.swift in Sources */,
+				715D0E682B5BF96F000B4704 /* WorkoutPlanService.swift in Sources */,
 				71E195252B55B7D30056E468 /* HTTPMethod.swift in Sources */,
 				715D0E632B5BF019000B4704 /* RegisterService.swift in Sources */,
+				715D0E6B2B5BFBAD000B4704 /* WorkoutPlan.swift in Sources */,
 				71D1DB632B5AC23C00027786 /* ImagePicker.swift in Sources */,
 				7182673E2B56EEF600579D2D /* SideMenuView.swift in Sources */,
 				713848FE2B583E160060D210 /* Common.swift in Sources */,

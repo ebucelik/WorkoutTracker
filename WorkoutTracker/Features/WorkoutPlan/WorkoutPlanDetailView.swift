@@ -16,7 +16,11 @@ struct WorkoutPlanDetailView: View {
     var account: Account
 
     @State
-    var workout: Workout
+    var workoutPlan: WorkoutPlan
+    @State
+    var message: Message?
+
+    let workoutPlanService = WorkoutPlanService()
 
     var body: some View {
         ScrollView {
@@ -27,15 +31,19 @@ struct WorkoutPlanDetailView: View {
                 Spacer()
                     .frame(height: 25)
 
-                TextField("Add workout name", text: $workout.workoutname)
+                if let message {
+                    Common.shared.messageView(message: message)
+                }
+
+                TextField("Add workout name", text: $workoutPlan.workoutplanname)
 
                 Divider()
 
                 Spacer()
                     .frame(height: 25)
 
-                if !workout.workouts.isEmpty {
-                    ForEach(Array(workout.workouts.enumerated()), id: \.offset) { exercise in
+                if !workoutPlan.exercises.isEmpty {
+                    ForEach(Array(workoutPlan.exercises.enumerated()), id: \.offset) { exercise in
                         VStack {
                             HStack {
                                 VStack {
@@ -49,7 +57,7 @@ struct WorkoutPlanDetailView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
 
                                     VStack {
-                                        TextField("Exercise e.g. Benchpress", text: $workout.workouts[exercise.offset].exercise)
+                                        TextField("Exercise e.g. Benchpress", text: $workoutPlan.exercises[exercise.offset].name)
                                     }
                                     .padding(8)
                                     .background(.gray.opacity(0.3))
@@ -63,7 +71,7 @@ struct WorkoutPlanDetailView: View {
                                     VStack {
                                         TextField(
                                             "Set e.g. 3",
-                                            value: $workout.workouts[exercise.offset].set,
+                                            value: $workoutPlan.exercises[exercise.offset].sets,
                                             formatter: NumberFormatter()
                                         )
                                     }
@@ -73,7 +81,7 @@ struct WorkoutPlanDetailView: View {
                                 }
 
                                 Button {
-                                    workout.workouts.remove(at: exercise.offset)
+                                    workoutPlan.exercises.remove(at: exercise.offset)
                                 } label: {
                                     Image(systemName: "minus.circle.fill")
                                         .resizable()
@@ -90,20 +98,38 @@ struct WorkoutPlanDetailView: View {
                 }
 
                 Button {
-                    workout.workouts.append(Workout.Exercise.empty)
+                    workoutPlan.exercises.append(WorkoutPlan.Exercise.empty)
                 } label: {
                     Text("Add new exercise")
                 }
 
-                if !workout.workoutname.isEmpty,
-                   !workout.workouts.isEmpty,
-                   workout.workouts.allSatisfy({ $0.set > 0 && !$0.exercise.isEmpty }) {
+                if !workoutPlan.workoutplanname.isEmpty,
+                   !workoutPlan.exercises.isEmpty,
+                   workoutPlan.exercises.allSatisfy({ $0.sets > 0 && !$0.name.isEmpty }) {
                     Spacer()
                         .frame(height: 25)
 
                     Button {
-                        // TODO: save workout plan call
-                        dismiss()
+                        Task {
+                            do {
+                                message = nil
+
+                                workoutPlan.username = account.username
+
+                                _ = try await workoutPlanService.addWorkoutPlan(workoutPlan)
+
+                                dismiss()
+                            } catch {
+                                if let error = error as? APIError {
+                                    switch error {
+                                    case .unauthorized(let message), .unknown(let message):
+                                        self.message = message
+                                    default:
+                                        break
+                                    }
+                                }
+                            }
+                        }
                     } label: {
                         Text("Save workout plan")
                     }
