@@ -43,6 +43,34 @@ extension WorkoutPlan {
             ]
         )
     }
+
+    func toWorkoutExercises() -> [Workout.Exercise] {
+        var workouts = [Workout.Exercise]()
+
+        for exercise in self.exercises {
+            for set in 0..<exercise.sets {
+                workouts.append(
+                    Workout.Exercise(
+                        exercise: exercise.name,
+                        set: set + 1,
+                        weight: exercise.weight,
+                        reps: exercise.reps
+                    )
+                )
+            }
+        }
+
+        return workouts
+    }
+
+    func toWorkout() -> Workout {
+        Workout(
+            username: nil,
+            workoutname: self.workoutplanname,
+            workoutdate: "",
+            workouts: self.toWorkoutExercises()
+        )
+    }
 }
 
 extension WorkoutPlan.Exercise {

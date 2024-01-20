@@ -9,13 +9,21 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
 
-    @Binding
+    @State
+    var message: Message?
+
+    @State
     var workout: Workout
 
     var isAddPlanView: Bool
 
     @Environment(\.dismiss)
     var dismiss
+
+    @EnvironmentObject
+    var account: Account
+
+    let workoutService = WorkoutService()
 
     var weightFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -24,10 +32,20 @@ struct WorkoutDetailView: View {
         return formatter
     }
 
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+
     var body: some View {
         VStack {
             Text(workout.workoutname)
                 .font(.largeTitle)
+
+            if let message {
+                Common.shared.messageView(message: message)
+            }
 
             List(Array(workout.workouts.enumerated()), id: \.offset) { exercise in
                 VStack(alignment: .leading) {
@@ -70,8 +88,27 @@ struct WorkoutDetailView: View {
 
             Button(
                 action: {
-                    // TODO: save plan
-                    dismiss()
+                    Task {
+                        do {
+                            message = nil
+
+                            workout.username = account.username
+                            workout.workoutdate = dateFormatter.string(from: Date.now)
+
+                            _ = try await workoutService.addWorkout(with: workout)
+
+                            dismiss()
+                        } catch {
+                            if let error = error as? APIError {
+                                switch error {
+                                case .unauthorized(let message), .unknown(let message):
+                                    self.message = message
+                                default:
+                                    break
+                                }
+                            }
+                        }
+                    }
                 },
                 label: {
                     if isAddPlanView {

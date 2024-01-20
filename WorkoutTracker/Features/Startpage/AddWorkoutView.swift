@@ -9,19 +9,30 @@ import SwiftUI
 
 struct AddWorkoutView: View {
 
-    let workouts: [Workout] = .workouts
-
     @State
-    var selectedWorkoutPlan: Workout = .empty
+    var workoutPlans: [WorkoutPlan] = []
+    @State
+    var selectedWorkoutPlan: WorkoutPlan = .empty
+    @State
+    var message: Message?
+
+    @EnvironmentObject
+    var account: Account
+
+    let workoutPlanService = WorkoutPlanService()
 
     var body: some View {
         VStack {
             Text("Choose a plan")
                 .font(.largeTitle)
 
+            if let message {
+                Common.shared.messageView(message: message)
+            }
+
             Picker("", selection: $selectedWorkoutPlan) {
-                ForEach(workouts, id: \.self) { workout in
-                    Text(workout.workoutname)
+                ForEach(workoutPlans, id: \.self) { workout in
+                    Text(workout.workoutplanname)
                         .tag(workout)
                 }
             }
@@ -32,9 +43,27 @@ struct AddWorkoutView: View {
 
             if selectedWorkoutPlan != .empty {
                 WorkoutDetailView(
-                    workout: $selectedWorkoutPlan,
+                    workout: selectedWorkoutPlan.toWorkout(),
                     isAddPlanView: true
                 )
+            }
+        }
+        .onAppear {
+            Task {
+                do {
+                    message = nil
+
+                    self.workoutPlans = try await workoutPlanService.getWorkoutPlans(by: account.username)
+                } catch {
+                    if let error = error as? APIError {
+                        switch error {
+                        case .unauthorized(let message), .unknown(let message):
+                            self.message = message
+                        default:
+                            break
+                        }
+                    }
+                }
             }
         }
     }
