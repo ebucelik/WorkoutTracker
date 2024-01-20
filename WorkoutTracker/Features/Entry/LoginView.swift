@@ -11,6 +11,8 @@ struct LoginView: View {
 
     @State
     var login: Login = .empty
+    @State
+    var message: Message?
 
     @Binding
     var showRegisterView: Bool
@@ -18,12 +20,18 @@ struct LoginView: View {
     @EnvironmentObject
     var account: Account
 
+    let loginService = LoginService()
+
     var body: some View {
         VStack {
             Text("Login")
                 .font(.largeTitle)
 
             Spacer()
+
+            if let message {
+                Common.shared.messageView(message: message)
+            }
 
             VStack {
                 TextField(text: $login.username) {
@@ -73,9 +81,30 @@ struct LoginView: View {
             VStack {
                 Button(
                     action: {
-                        // TODO: Login
-//                        isUserLoggedIn.toggle()
-                        account.username = "ebu"
+                        if !login.password.isEmpty,
+                           !login.username.isEmpty {
+                            Task {
+                                do {
+                                    message = nil
+
+                                    let responseLogin = try await loginService.login(login)
+
+                                    account.username = responseLogin.username
+                                    account.password = responseLogin.password
+
+                                    UserDefaults.standard.setValue(responseLogin.username, forKey: "username")
+                                } catch {
+                                    if let error = error as? APIError {
+                                        switch error {
+                                        case .unauthorized(let message), .unknown(let message):
+                                            self.message = message
+                                        default:
+                                            break
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     label: {
                         Text("LOGIN")

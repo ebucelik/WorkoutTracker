@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Message: Codable, Equatable {
+public struct Message: Codable, Equatable {
     public let message: String
 
-    init(message: String) {
+    public init(message: String) {
         self.message = message
     }
 }

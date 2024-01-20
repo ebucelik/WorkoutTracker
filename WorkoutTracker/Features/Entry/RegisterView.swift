@@ -11,6 +11,8 @@ struct RegisterView: View {
 
     @State
     var register: Register = .empty
+    @State
+    var message: Message?
 
     @Binding
     var showRegisterView: Bool
@@ -18,12 +20,18 @@ struct RegisterView: View {
     @EnvironmentObject
     var account: Account
 
+    let registerService = RegisterService()
+
     var body: some View {
         VStack {
             Text("Login")
                 .font(.largeTitle)
 
             Spacer()
+
+            if let message {
+                Common.shared.messageView(message: message)
+            }
 
             VStack {
                 TextField(text: $register.email) {
@@ -88,8 +96,32 @@ struct RegisterView: View {
             VStack {
                 Button(
                     action: {
-                        // TODO: Register
-                        account.username = "Wee"
+                        if !register.email.isEmpty,
+                           !register.password.isEmpty,
+                           !register.username.isEmpty {
+                            Task {
+                                do {
+                                    message = nil
+
+                                    let responseRegister = try await registerService.register(register)
+
+                                    account.username = responseRegister.username
+                                    account.email = responseRegister.email
+                                    account.password = responseRegister.password
+
+                                    UserDefaults.standard.setValue(responseRegister.username, forKey: "username")
+                                } catch {
+                                    if let error = error as? APIError {
+                                        switch error {
+                                        case .unauthorized(let message), .unknown(let message):
+                                            self.message = message
+                                        default:
+                                            break
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     label: {
                         Text("REGISTER")

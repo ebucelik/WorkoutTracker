@@ -100,12 +100,14 @@ struct AppView: View {
                 EntryView()
                     .navigationBarBackButtonHidden()
             }
-            .onReceive(
-                account.$username,
-                perform: { username in
-                    showEntryView = username.isEmpty
+            .onAppear {
+                if let username = UserDefaults.standard.string(forKey: "username"),
+                   !username.isEmpty {
+                    account.username = username
+                } else {
+                    showEntryView = true
                 }
-            )
+            }
         }
     }
 }

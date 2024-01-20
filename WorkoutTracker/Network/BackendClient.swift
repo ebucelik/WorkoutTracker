@@ -107,9 +107,19 @@ class BackendClient {
                     completion(.failure(error))
                 }
             } else if response.statusCode == 401 {
-                completion(.failure(APIError.unauthorized))
+                do {
+                    let model = try JSONDecoder().decode(Message.self, from: data)
+                    completion(.failure(APIError.unauthorized(model)))
+                } catch {
+                    completion(.failure(APIError.unauthorized(nil)))
+                }
             } else {
-                completion(.failure(APIError.unknown))
+                do {
+                    let model = try JSONDecoder().decode(Message.self, from: data)
+                    completion(.failure(APIError.unknown(model)))
+                } catch {
+                    completion(.failure(APIError.unknown(nil)))
+                }
             }
         } else {
             completion(.failure(APIError.unexpectedError("Data is corrupt.")))
@@ -126,6 +136,7 @@ class BackendClient {
         var urlRequest = URLRequest(url: url)
 
         urlRequest.httpMethod = call.httpMethod.rawValue
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         if let body = call.body {
             urlRequest.httpBody = try? JSONEncoder().encode(body)
@@ -136,7 +147,7 @@ class BackendClient {
 }
 
 extension BackendClient {
-    func isStatusCodeValid(_ code: Int) -> Bool {
+    private func isStatusCodeValid(_ code: Int) -> Bool {
         (200..<399).contains(code)
     }
 }

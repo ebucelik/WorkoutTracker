@@ -19,7 +19,7 @@ protocol Call {
 }
 
 extension Call {
-    var domain: String { "" }
+    var domain: String { "http://localhost:8080/api/v1/" }
 
     var path: String { domain + resource }
 

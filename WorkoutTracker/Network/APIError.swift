@@ -12,8 +12,8 @@ public enum APIError: Error {
     case unexpectedError(String)
     case notFound
     case notModified
-    case unauthorized
-    case unknown
+    case unauthorized(Message?)
+    case unknown(Message?)
 }
 
 extension APIError: Equatable {

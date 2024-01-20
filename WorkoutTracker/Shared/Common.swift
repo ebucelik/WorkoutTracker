@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public class Common {
 
@@ -20,5 +21,17 @@ public class Common {
             from: nil,
             for: nil
         )
+    }
+
+    public func messageView(message: Message) -> some View {
+        HStack {
+            Text(message.message)
+                .font(.caption)
+                .foregroundStyle(.white)
+                .padding()
+        }
+        .background(.red)
+        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
+        .padding(.bottom)
     }
 }
